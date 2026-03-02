@@ -7,6 +7,7 @@ on:
 
 jobs:
   check-deployment:
+    if: github.actor != 'github-classroom[bot]'
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +44,6 @@ jobs:
 
           echo "Fetching: $URL"
 
-          # Will automatically fail if not 200
           curl -L --fail --max-time 20 "$URL" -o body.html
 
           echo "Checking page content for CSC309..."
